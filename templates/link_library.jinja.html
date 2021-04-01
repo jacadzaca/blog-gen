@@ -1,0 +1,49 @@
+{% macro render_bookmark(bookmark) -%}
+    <details open>
+        <summary><h1>{{ bookmark.name }}</h1></summary>
+        <ul>
+            {% for element in bookmark.children %}
+                {% if element.has_children %}
+                    {{ render_bookmark(element) }}
+                {% else %}
+                    <li>
+                    <a target="_blank"
+                        href="{{ element.url }}">{{ element.name }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </details>
+{%- endmacro %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Link Library</title>
+        <link rel="stylesheet" href="style.css"></link>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Link I consider intresting">
+    </head>
+    <body>
+        <hr>
+        <nav class="fancy-nav">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a target="_blank" href="https://github.com/jacadzaca">Code</a>
+        </nav>
+        <hr>
+        {% for bookmark in bookmarks %}
+            {{ render_bookmark(bookmark) }}
+        {% endfor %}
+        <hr>
+        <footer class="fancy-nav">
+            <a href="linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
+            <a href="mailto:vitouejj@gmail.com" title="Get in contact">Email</a>
+            <a href="jacadzaca.gpg" title="Pretty good privacy">PGP</a>
+            <a target="_blank" href="rss.xml" title="Stay updated">Feed</a>
+            <a href="bookmarks.html" title="Browser bookmarks">Interesting Links</a>
+        </footer>
+        <hr>
+    </body>
+</html>
+

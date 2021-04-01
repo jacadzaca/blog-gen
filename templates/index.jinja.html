@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>jaca's Homepage</title>
+        <link rel="stylesheet" href="style.css"></link>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="jaca's website">
+    </head>
+    <body>
+        <h1 style="text-align: left;">jaca's safe haven</h1>
+        <hr>
+        <nav class="fancy-nav">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a target="_blank" href="https://github.com/jacadzaca">Code</a>
+        </nav>
+        <hr>
+        <img class="avatar" src="pix/avatar.jpg"/>
+        <p>
+        I am a applied-maths major in spe, who is currently working on a Monopoly
+        ripoff in Kotlin.
+        <br><br>
+        I keep a diary and a
+        <a href="https://en.wikipedia.org/wiki/Dream_diary">dream diary</a>.
+        I also enjoy reading philosophy.
+        <br>
+        If the page looks odd on your device, feel free to
+        <a href="mailto:vitouejj@gmail.com" title="Get in contact">email</a> me.
+        </p>
+        <h2>Recent posts
+            <a title="Newsletters are bloat, rss is 1337" href="rss.xml">(feed)</a>:
+        </h2>
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <a href="{{ post.file_name }}">{{ post.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <hr>
+        <footer class="fancy-nav">
+            <a href="linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
+            <a href="mailto:vitouejj@gmail.com" title="Get in contact">Email</a>
+            <a href="jacadzaca.gpg" title="Pretty good privacy">PGP</a>
+            <a target="_blank" href="rss.xml" title="Stay updated">Feed</a>
+            <a href="bookmarks.html" title="Browser bookmarks">Interesting Links</a>
+        </footer>
+        <hr>
+        <a href="webring.html"><h1 style="text-align: left;">webring</h1></a>
+    </body>
+</html>
+
