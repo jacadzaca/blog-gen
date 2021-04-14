@@ -13,7 +13,7 @@ class Post():
     title: str = field(compare=False)
     file_name: str = field(compare=False)
     text: str = field(compare=False)
-    date: str = field(compare=False)
+    date: str
 
 def main():
     parser = argparse.ArgumentParser(description='creates a blog feed page, a rss feed and the lates posts section in the index.html')
