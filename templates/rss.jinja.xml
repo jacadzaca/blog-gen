@@ -10,7 +10,6 @@
             <url>{{ url }}/pix/avatar.jpg</url>
             <link>{{ url }}rss.xml</link>
         </image>
-        <!-- LB -->
         {% for post in posts %}
             <item>
                 <title>{{ post.title }}</title>
