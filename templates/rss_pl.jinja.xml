@@ -1,12 +1,12 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>jaca's safe haven</title>
-        <description>Updates from jaca's safe haven</description>
-        <language>en</language>
-        <link>{{ url }}rss.xml</link>
-        <atom:link href="{{ url }}rss.xml" rel="self" type="application/rss+xml"/>
+        <title>przystań jacy</title>
+        <description>rss przystań jacy</description>
+        <language>pl</language>
+        <link>{{ url }}rss_pl.xml</link>
+        <atom:link href="{{ url }}rss_pl.xml" rel="self" type="application/rss+xml"/>
         <image>
-            <title>jaca's safe haven</title>
+            <title>przystań jacy</title>
             <url>{{ url }}/pix/avatar.jpg</url>
             <link>{{ url }}rss.xml</link>
         </image>

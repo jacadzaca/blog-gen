@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <title>blog jacy</title>
+        <link rel="stylesheet" href="style.css"></link>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="blog jacy">
+    </head>
+    <body>
+        <hr>
+        <nav class="fancy-nav">
+            <a href="index_pl.html">Home</a>
+            <a href="blog.html">Blog 🇬🇧 </a>
+            <a href="blog_pl.html">Blog 🇵🇱 </a>
+        </nav>
+        <hr>
+        {% for post in posts %}
+            <h2>{{ post.title }}</h2>
+            <small>
+                [
+                <a href="#{{ post.id}}">link</a> —
+                <a href="{{ post.post_path }}">podstrona</a>
+                ] {{ post.date }}
+            </small>
+            <blockquote id="{{ post.title }}">
+                <p>{{ post.text }}</p>
+            </blockquote>
+        {% endfor %}
+        <hr>
+        <footer class="fancy-nav">
+            <a href="linux_tech_tips.html" title="">Fakty o Linuxie</a>
+            <a href="mailto:vitouejj@gmail.com" title="Napisz">Email</a>
+            <a href="jacadzaca.gpg" title="Pretty good privacy">PGP</a>
+            <a target="_blank" href="rss_pl.xml" title="Bądź na bieżąco">Feed</a>
+            <a href="bookmarks.html" title="Moje zakładki">Ciekawe Linkis</a>
+        </footer>
+        <hr>
+    </body>
+</html>
