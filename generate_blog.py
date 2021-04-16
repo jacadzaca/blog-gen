@@ -2,6 +2,7 @@
 import re
 import os
 import time
+import locale
 import argparse
 from dataclasses import dataclass
 from jinja2 import Environment, PackageLoader
@@ -70,8 +71,11 @@ def main():
                         help='file to output index.html')
     parser.add_argument('--blog', default='blog.html',
                         help='file to output the blog feed page')
+    parser.add_argument('--locale', default=None, help="see man locale" )
 
     argv = parser.parse_args()
+    if argv.locale != None:
+        locale.setlocale(locale.LC_TIME, argv.locale)
     generate_blog(argv.posts, argv.rss, argv.blog, argv.home, argv.url)
 
 
