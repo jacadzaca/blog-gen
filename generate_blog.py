@@ -14,7 +14,11 @@ class Post():
     id: str = field(compare=False)
     file_name: str = field(compare=False)
     text: str = field(compare=False)
-    date: str
+    _date: float
+    date: str = field(compare=False, default=None)
+
+    def __post_init__(self):
+        self.date = time.strftime('%a, %d %b %Y %X', self._date)
 
 def main():
     parser = argparse.ArgumentParser(description='creates a blog feed page, a rss feed and the lates posts section in the index.html')
@@ -28,8 +32,7 @@ def main():
     posts = []
     for file_name in argv.posts:
         if os.path.isfile(file_name):
-            ctime = os.path.getctime(file_name)
-            post_date = time.strftime('%a, %d %b %Y %X', time.localtime(ctime))
+            post_date = time.localtime(os.path.getctime(file_name))
             post_id = file_name.split('/')[-1].split('.')[0]
             post_title = post_id.replace('_', ' ')
             with open(file_name) as f:
