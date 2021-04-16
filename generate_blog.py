@@ -44,17 +44,17 @@ def read_posts(paths):
     return posts
 
 
-def generate_blog(posts_paths, rss_path, blogs_path, home_path, url):
+def generate_blog(posts_paths, rss_path, blogs_path, home_path, url, locale=''):
     posts = read_posts(posts_paths)
     with open(rss_path, 'w') as rss_f, open(blogs_path, 'w') as blog_f, open(home_path, 'w') as home_f:
-        rss = ENV.get_template('rss.jinja.xml').render(
+        rss = ENV.get_template(f'rss{locale}.jinja.xml').render(
             url=url, posts=posts[:9])
         rss_f.write(rss)
 
-        blog = ENV.get_template('blog.jinja.html').render(posts=posts)
+        blog = ENV.get_template(f'blog{locale}.jinja.html').render(posts=posts)
         blog_f.write(blog)
 
-        home = ENV.get_template('index.jinja.html').render(posts=posts[:5])
+        home = ENV.get_template(f'index{locale}.jinja.html').render(posts=posts[:5])
         home_f.write(home)
 
 
@@ -76,7 +76,9 @@ def main():
     argv = parser.parse_args()
     if argv.locale != None:
         locale.setlocale(locale.LC_TIME, argv.locale)
-    generate_blog(argv.posts, argv.rss, argv.blog, argv.home, argv.url)
+        generate_blog(argv.posts, argv.rss, argv.blog, argv.home, argv.url, f'_{argv.locale[0:2]}')
+    else:
+        generate_blog(argv.posts, argv.rss, argv.blog, argv.home, argv.url)
 
 
 if __name__ == '__main__':
