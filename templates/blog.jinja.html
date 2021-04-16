@@ -15,14 +15,18 @@
             <a href="blog_pl.html">Blog 🇵🇱 </a>
         </nav>
         <hr>
-        <ul>
-            {% for post in posts %}
-                <li>
-                    <a href="{{ post.file_name }}">{{ post.title }}</a>
-                    {{ post.date }}
-                </li>
-            {% endfor %}
-        </ul>
+        {% for post in posts %}
+            <h2>{{ post.title }}</h2>
+            <small>
+                [
+                <a href="#{{ post.id}}">link</a> —
+                <a href="{{ post.file_name }}">standalone</a>
+                ] {{ post.date }}
+            </small>
+            <blockquote id="{{ post.title }}">
+                <p>{{ post.text }}</p>
+            </blockquote>
+        {% endfor %}
         <hr>
         <footer class="fancy-nav">
             <a href="linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>

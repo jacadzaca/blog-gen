@@ -11,6 +11,7 @@ TEXT_REGEX='<p id="post">((.|\n)*)</p>'
 @dataclass(order=True)
 class Post():
     title: str = field(compare=False)
+    id: str = field(compare=False)
     file_name: str = field(compare=False)
     text: str = field(compare=False)
     date: str
@@ -29,10 +30,11 @@ def main():
         if os.path.isfile(file_name):
             ctime = os.path.getctime(file_name)
             post_date = time.strftime('%a, %d %b %Y %X', time.localtime(ctime))
-            post_title = file_name.split('/')[-1].split('.')[0].replace('_', ' ')
+            post_id = file_name.split('/')[-1].split('.')[0]
+            post_title = post_id.replace('_', ' ')
             with open(file_name) as f:
                 post_text = re.search(TEXT_REGEX, f.read()).group(1)
-            posts.append(Post(post_title, file_name, post_text, post_date))
+            posts.append(Post(post_title, post_id, file_name, post_text, post_date))
     posts.sort(reverse=True)
 
     env = Environment(
