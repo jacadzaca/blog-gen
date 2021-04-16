@@ -3,4 +3,7 @@ blog_pl
 venv/*
 pepes.txt
 build.sh
+tags
+blog.html
+style.css
 
