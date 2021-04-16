@@ -13,8 +13,8 @@
         {% for post in posts %}
             <item>
                 <title>{{ post.title }}</title>
-                <guid>{{ url }}{{ post.file_name }}</guid>
-                <link>{{ url}}{{ post.file_name }}</link>
+                <guid>{{ url }}{{ post.post_path }}</guid>
+                <link>{{ url}}{{ post.post_path }}</link>
                 <pubDate>{{ post.date }} 0200</pubDate>
                 <description>
                     <![CDATA[ {{ post.text }} ]]>
