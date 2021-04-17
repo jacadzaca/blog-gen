@@ -31,13 +31,13 @@ def to_bookmark(json):
 
 
 def generate_link_library(bookmarks_path, output_path):
-    with open(path) as f, open(output_path, 'w') as page_f:
+    with open(bookmarks_path) as bookmark_f, open(output_path, 'w') as page_f:
         env = Environment(
             loader=PackageLoader(__name__, './templates'),
             trim_blocks=True,
             lstrip_blocks=True)
 
-        raw_bookmarks = json.load(f)['roots']['bookmark_bar']['children']
+        raw_bookmarks = json.load(bookmark_f)['roots']['bookmark_bar']['children']
         bookmarks = [to_bookmark(element) for element in raw_bookmarks]
         template = env.get_template('link_library.jinja.html')
         page_f.write(template.render(bookmarks=bookmarks))
@@ -54,3 +54,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
