@@ -31,10 +31,10 @@ def read_posts(paths):
     <p> tag with an "post" id
     """
     posts = []
-    for c_time, post_path in sorted(zip(map(os.path.getctime, paths), paths), reverse=True):
+    for m_time, post_path in sorted(zip(map(os.path.getmtime, paths), paths), reverse=True):
         if os.path.isfile(post_path):
             post_date = time.strftime(
-                '%a, %d %b %Y %X', time.localtime(c_time))
+                '%a, %d %b %Y %X', time.localtime(m_time))
             post_id = post_path.split('/')[-1].split('.')[0]
             post_title = post_id.replace('_', ' ')
             with open(post_path) as f:
