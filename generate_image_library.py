@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import argparse
-from jinja2 import Environment, PackageLoader
+from jinja2 import Environment, FileSystemLoader
 
 
 def generate_image_library(path, images_per_site, name, description):
@@ -14,7 +14,7 @@ def generate_image_library(path, images_per_site, name, description):
             chunk.append(f'https://drive.google.com/uc?id={identifier}')
 
     env = Environment(
-        loader=PackageLoader(__name__, 'templates'),
+        loader=FileSystemLoader('./templates'),
         trim_blocks=True,
         lstrip_blocks=True)
 

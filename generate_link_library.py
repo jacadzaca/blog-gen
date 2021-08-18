@@ -3,7 +3,7 @@ import json
 import argparse
 from typing import Any
 from dataclasses import dataclass
-from jinja2 import Environment, PackageLoader
+from jinja2 import Environment, FileSystemLoader
 
 
 @dataclass
@@ -33,7 +33,7 @@ def to_bookmark(json):
 def generate_link_library(bookmarks_path, output_path):
     with open(bookmarks_path) as bookmark_f, open(output_path, 'w') as page_f:
         env = Environment(
-            loader=PackageLoader(__name__, './templates'),
+            loader=FileSystemLoader('./templates'),
             trim_blocks=True,
             lstrip_blocks=True)
 

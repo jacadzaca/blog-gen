@@ -5,13 +5,13 @@ import time
 import locale
 import argparse
 from dataclasses import dataclass
-from jinja2 import Environment, PackageLoader
+from jinja2 import Environment, FileSystemLoader
 
 TEXT_REGEX = '<p id="post">((.|\n)*)</p>'
 
 
 ENV = Environment(
-    loader=PackageLoader(__name__, './templates'),
+    loader=FileSystemLoader('./templates'),
     trim_blocks=True,
     lstrip_blocks=True)
 
