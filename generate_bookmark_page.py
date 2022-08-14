@@ -39,8 +39,8 @@ def generate_link_library(bookmarks_path, output_path):
 
         raw_bookmarks = json.load(bookmark_f)['roots']['bookmark_bar']['children']
         bookmarks = [to_bookmark(element) for element in raw_bookmarks]
-        template = env.get_template('link_library.jinja.html')
-        page_f.write(template.render(bookmarks=bookmarks))
+        template = env.get_template('bookmarks.jinja.html')
+        page_f.write(template.render(bookmarks=bookmarks, count=len(bookmarks)))
 
 
 def main():

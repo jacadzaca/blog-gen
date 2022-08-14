@@ -1,0 +1,79 @@
+{% macro render_bookmark(bookmark, index) -%}
+    <ul id="slide-{{ index }}">
+        {% for element in bookmark.children %}
+            {% if element.has_children %}
+                {{ render_bookmark(element) }}
+            {% else %}
+                <li><a target="_blank" href="{{ element.url }}">{{ element.name }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{%- endmacro %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" vocab="http://schema.org" typeof="Blog">
+    <head>
+        <title>Link Library | jaca's safe haven</title>
+
+        {% include 'head.partial.html' %}
+
+        <meta name="description" content="jaca's bookmarks">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="jaca's bookmarks">
+        <meta property="og:description" content="jaca's bookmarks">
+
+        <style>
+            {% for index in range(count) %}
+                {% if index == count - 1 %}
+            #slide-{{ index + 1 }} {
+                {% else %}
+            #slide-{{ index + 1 }},
+                {% endif %}
+            {% endfor %}
+                visibility: hidden;
+                opacity: 0;
+                transition: visibility 0s, opacity 0.5s linear;
+                overflow: auto;
+                position: fixed;
+                max-height: 80vh;
+            }
+
+            {% for bookmark in bookmarks %}
+                {% if loop.index == count %}
+            #enable-slide-{{ loop.index }}:checked ~ div > #slide-{{ loop.index }} {
+                {% else %}
+            #enable-slide-{{ loop.index }}:checked ~ div > #slide-{{ loop.index }},
+                {% endif %}
+            {% endfor %}
+                opacity: 1;
+                position: initial;
+                visibility: visible;
+            }
+        </style>
+    </head>
+    <body>
+        <hr style="grid-column: 1 / 3; grid-row: 1">
+        <nav>
+            {% include 'navigation.partial.html' %}
+        </nav>
+        <main>
+            {% for bookmark in bookmarks %}
+                {% if loop.index == 1 %}
+            <input type="radio" name="slides" id="enable-slide-{{ loop.index }}" checked>
+                {% else %}
+            <input type="radio" name="slides" id="enable-slide-{{ loop.index }}">
+                {% endif %}
+            <label for="enable-slide-{{ loop.index }}">{{ bookmark.name }}</label>
+            {% endfor %}
+            <div>
+            {% for bookmark in bookmarks %}
+                {{ render_bookmark(bookmark, loop.index) }}
+            {% endfor %}
+            <div>
+        </main>
+        <footer>
+            {% include 'footer.partial.html' %}
+        </footer>
+    </body>
+</html>
+
