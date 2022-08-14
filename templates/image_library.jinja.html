@@ -14,8 +14,7 @@
         <meta property="og:description" content="images of {{ name }}">
     </head>
     <body>
-        <h1>{{ description }}</h1>
-        <hr>
+        <hr style="grid-column: 1 / 3; grid-row: 1">
         <nav>
             {% include 'navigation.partial.html' %}
             <hr>
@@ -23,15 +22,18 @@
             <a title="next image library section" href="{{ name }}_library{{ next }}.html">Next</a>
             {% endif %}
         </nav>
-        <hr>
-        {% for url in urls %}
-            <img src="{{ url }}" loading="lazy"/>
-        {% endfor %}
-        <hr>
+        <main>
+            <div>
+                <h1>{{ description }}</h1>
+                {% for url in urls %}
+                <img src="{{ url }}" loading="lazy"/>
+                {% endfor %}
+            <div>
+        </main>
+        <hr style="grid-column: 1 / 3; grid-row: 3;">
         <footer>
             {% include 'footer.partial.html' %}
         </footer>
-        <hr>
     </body>
 </html>
 
