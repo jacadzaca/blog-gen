@@ -3,43 +3,21 @@
     <head>
         <title>jaca's blog</title>
 
-        <link rel="author" href="jacadzaca">
-        <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/rss.xml">
-        <link rel="icon" href="/pix/favicons/16x16.jpg" sizes="32x32" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/32x32.jpg" sizes="32x32" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/48x48.jpg" sizes="48x48" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/128x128.jpg" sizes="128x128" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/192x192.jpg" sizes="192x192" type="image/jpg">
-        <link rel="apple-touch-icon" href="/pix/favicon.avif">
-        <link rel="apple-touch-startup-image" href="/pix/favicon.avif">
-        <link rel="stylesheet" href="/style.css">
-        <link rel="manifest" href="/manifest.json">
+        {% include 'head.partial.html' %}
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#171716">
         <meta name="description" content="jaca's blog">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="jaca's blog">
-        <meta property="og:site_name" content="jaca's safe haven">
         <meta property="og:title" content="jaca's blog">
-        <meta property="og:image" content="/pix/favicons/1250x1250.jpg">
-        <meta property="og:image:width" content="1250">
-        <meta property="og:image:height" content="1250">
-        <meta property="og:image:alt" content="jaca's blog logo">
+        <meta property="og:description" content="jaca's blog">
     </head>
     <body>
         <hr>
-        <nav class="nav">
-            <a href="/index.html">Home</a>
-            <a href="/blog.html">Blog</a>
-            <ul title="Ways we can get in touch">
-                Contact
-                <div class="dropdown-content">
-                    <li><a href="mailto:vitouejj@gmail.com" title="Please encrypt your emails with PGP">Email</a></li>
-                    <li><a href="/jacadzaca.gpg" title="Pretty good privacy">PGP</a></li>
-                </div>
-            </ul>
+        <nav>
+            {% include 'navigation.partial.html' %}
+            <hr>
+            {% for post in posts %}
+            <a href="#{{ post.id}}">{{ post.title }}</a>
+            {% endfor %}
         </nav>
         <hr>
         <main>
@@ -57,10 +35,8 @@
             {% endfor %}
         </main>
         <hr>
-        <footer class="nav">
-            <a href="/linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
-            <a target="_blank" href="/rss.xml" title="Stay updated">Feed</a>
-            <a href="/bookmarks.html" title="Browser bookmarks">Bookmarked pages</a>
+        <footer>
+            {% include 'footer.partial.html' %}
         </footer>
         <hr>
     </body>
