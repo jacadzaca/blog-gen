@@ -7,7 +7,7 @@
         <atom:link href="{{ url }}rss.xml" rel="self" type="application/rss+xml"/>
         <image>
             <title>jaca's safe haven</title>
-            <url>{{ url }}/pix/avatar.jpg</url>
+            <url>{{ url }}/files/images/avatar.avif</url>
             <link>{{ url }}rss.xml</link>
         </image>
         {% for post in posts %}
@@ -15,7 +15,7 @@
                 <title>{{ post.title }}</title>
                 <guid>{{ url }}{{ post.post_path }}</guid>
                 <link>{{ url}}{{ post.post_path }}</link>
-                <pubDate>{{ post.date }} 0200</pubDate>
+                <pubDate>{{ post.date }} +0200</pubDate>
                 <description>
                     <![CDATA[ {{ post.text }} ]]>
                 </description>
