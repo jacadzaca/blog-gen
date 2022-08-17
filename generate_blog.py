@@ -7,7 +7,7 @@ import argparse
 from dataclasses import dataclass
 from jinja2 import Environment, FileSystemLoader
 
-TEXT_REGEX = '<article role="main">((.|\n)*)</article>'
+TEXT_REGEX = '<article>((.|\n)*)</article>'
 
 
 ENV = Environment(

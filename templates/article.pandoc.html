@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" vocab="http://schema.org" typeof="Blog">
+    <head>
+        <title>${title} | jaca's safe haven</title>
+        <link rel="stylesheet" href="/files/css/code_highlight.css"></link>
+
+${ head.partial.html() }
+
+        <meta name="description" content="${description}">
+        <meta property="og:type" content="article">
+        <meta property="article:published_time" content="${publication_date}">
+        <meta property="article:section" content="${section}">
+        <meta property="og:title" content="${title}">
+        <meta property="og:description" content="${description}">
+        $for(keywords)$<meta property="article:tag" content="$keywords$">
+        $endfor$
+    </head>
+    <body>
+        <hr style="grid-column: 1 / 3; grid-row: 1">
+        <nav>
+${ navigation.partial.html() }
+        </nav>
+        <main>
+            <article>
+                <h1>${title}</h1>
+                ${body}
+            </article>
+        </main>
+        <hr style="grid-column: 1 / 3; grid-row: 3;">
+        <footer>
+${ footer.partial.html() }
+        </footer>
+    </body>
+</html>
